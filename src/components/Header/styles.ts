@@ -1,12 +1,8 @@
 import styled from 'styled-components';
-import { Link as DefaultLink } from 'react-router-dom';
+import { NavLink as DefaultLink } from 'react-router-dom';
 
 interface ContainerProps {
   size?: 'small' | 'large';
-}
-
-interface LinkProps {
-  active: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -23,13 +19,14 @@ export const Container = styled.div<ContainerProps>`
   }
 `;
 
-export const Link = styled(DefaultLink)<LinkProps>`
+export const Link = styled(DefaultLink).attrs(() => ({
+  activeStyle: { borderBottom: '2px solid #FF872C' },
+}))`
   color: #fff;
   text-decoration: none;
   font-size: 16px;
   transition: opacity 0.2s;
   padding-bottom: 10px;
-  border-bottom: ${({ active }) => (active ? '2px solid #FF872C' : '0')};
 
   & + a {
     margin-left: 32px;
